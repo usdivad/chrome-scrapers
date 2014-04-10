@@ -14,7 +14,7 @@
 	*/
 
 	//Text
-	$filename = './cities_slave.txt';
+	$filename = './sleep_times.txt';
 	$file = file($filename);
 	$line = $file[0];
 	//take current city attempt and put it at the bottom; prevents "reloading" pages
@@ -28,15 +28,6 @@
 		echo "empty!";
 		file_put_contents($filename, file('./cities_master.txt'));
 	}
-
-
-	//time stuff
-	$sleepTimes = file('./sleep_times.txt');
-	$sleepLine = $sleepTimes[0];
-
-	$timelog = fopen('./timelog.txt', 'a');
-	fwrite($timelog, $sleepLine." for getting ".$line); //no .PHP_EOL
-	fclose($timelog);
 
 	exit();
 ?>
