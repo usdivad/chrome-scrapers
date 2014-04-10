@@ -1,3 +1,50 @@
 London
 New York City
 Shanghai
+Dubai
+Paris
+Beijing
+San Francisco
+Bangkok
+Chicago
+Atlanta
+Toronto
+Istanbul
+Las Vegas
+Vancouver
+Houston
+Hong Kong
+Munich
+Washington DC
+Frankfurt
+Rome
+Dallas
+Cologne
+Düsseldorf
+Bali
+Berlin
+Singapore
+Sydney
+Orlando
+San Diego
+Boston
+Los Angeles
+Abu Dhabi
+New Orleans
+Seoul
+Tokyo
+Amsterdam
+Stuttgart
+Barcelona
+Montreal
+Vienna
+Brussels
+Milan
+Philadelphia
+Mumbai
+Bombay
+Brisbane
+Calgary
+Edmonton
+Phuket
+Sao Paulo
