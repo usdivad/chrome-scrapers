@@ -14,12 +14,19 @@
 	*/
 
 	//Text
-	$file = fopen('./collected_data.txt', 'a');
+	$file = fopen('./kayak_data.csv', 'a');
 	fwrite($file, $data); //no .PHP_EOL
 	fclose($file);
 	echo "hoho\n";
 	echo "data is ".$data;
 
+	//Remove the current city (cos we've already collected the data)
+	$cities_name = './cities_slave.txt';
+	$cities = file($cities_name);
+	$line = $cities[0];
+	echo "removed ".$line;
+	unset($cities[0]);
+	file_put_contents($cities_name, $cities);
 
 	exit();
 ?>
