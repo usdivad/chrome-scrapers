@@ -116,36 +116,50 @@ for (var i=0; i<hotelListings.length; i++) {
 console.log(csvString);*/
 
 //Data collection
-var http = new XMLHttpRequest();
-var url = "http://usdivad.com/l2/kayak/collect.php";
+sendToCsv(csvString);
 
-//For JSON params
-/*var jsonString = JSON.stringify({a:"orange", b:"apple"});
-var params = "data="+encodeURIComponent(jsonString);*/
-
-var params = "data=" + encodeURIComponent(csvString);
-http.open("POST", url, true);
-
-//Send the proper header information along with the request
-http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//http.setRequestHeader("Content-type", "application/json");
-//http.setRequestHeader("Content-type", "application/json;charset=UTF-8")
-/*http.setRequestHeader("Content-length", params.length);
-http.setRequestHeader("Connection", "close");*/
-
-http.onreadystatechange = function() {//Call a function when the state changes.
-    if(http.readyState == 4 && http.status == 200) {
-        console.log(http.responseText);
-    }
-}
-http.send(params);
-
-/*$.post("collect.php", {data: csvString}, function(d) {
-	console.log("post");
-});*/
 
 } //end KayakScrapers
 
+function getCity() {
+	var http = new XMLHttpRequest();
+	var url = "http://usdivad.com/l2/kayak/get_city.php";
+	http.open("GET", url, true);
+	http.onreadystatechange = function() {
+		if (http.readyState == 4 && http.status == 200) {
+			console.log(http.responseText);
+		}
+	}
+	http.send(null);
+	//http.open("GET")
+}
+
+
+function sendToCsv(str) {
+	var http = new XMLHttpRequest();
+	var url = "http://usdivad.com/l2/kayak/collect.php";
+
+	//For JSON params
+	/*var jsonString = JSON.stringify({a:"orange", b:"apple"});
+	var params = "data="+encodeURIComponent(jsonString);*/
+
+	var params = "data=" + encodeURIComponent(str);
+	http.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//http.setRequestHeader("Content-type", "application/json");
+	//http.setRequestHeader("Content-type", "application/json;charset=UTF-8")
+	/*http.setRequestHeader("Content-length", params.length);
+	http.setRequestHeader("Connection", "close");*/
+
+	http.onreadystatechange = function() {//Call a function when the state changes.
+	    if(http.readyState == 4 && http.status == 200) {
+	        console.log(http.responseText);
+	    }
+	}
+	http.send(params);
+}
 
 function toCsvFormat(strings,alternate_sources) {
 	var s = "";
