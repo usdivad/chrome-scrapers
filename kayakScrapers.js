@@ -3,6 +3,7 @@ function KayakScrapers() {
 //test URL = http://www.kayak.com/hotels/London,England,United-Kingdom-c28501/2014-04-18/2014-04-19/2guests
 
 //coll data
+var city = window.location.href.match(/hotels\/.*(?=\/.+\/.+\/)/)[0].replace("hotels/", "");
 var rank = 1;
 var total_hotels = "";
 var asLength = 5;
@@ -11,7 +12,7 @@ date_create = date_create.match(/\d+\/\d+\/\d+/)[0];*/
 var now = new Date();
 var date_create = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + now.getUTCDate();
 
-var csvColumns = "date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels";
+var csvColumns = "city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels";
 for (var i=0; i<asLength; i++) {
 	csvColumns += ",alt"+(i+1);
 }
@@ -105,7 +106,7 @@ for (var i=0; i<hotelListings.length; i++) {
 
 	rank = i+1;
 
-	var csvLine = (toCsvFormat([date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels],alternate_sources) + "\n");
+	var csvLine = (toCsvFormat([city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels],alternate_sources) + "\n");
 	//console.log((i+2) + ": " + csvLine);
 	csvString += csvLine;
 
@@ -122,7 +123,7 @@ var url = "http://usdivad.com/l2/kayak/collect.php";
 /*var jsonString = JSON.stringify({a:"orange", b:"apple"});
 var params = "data="+encodeURIComponent(jsonString);*/
 
-var params = "data=" + csvString;
+var params = "data=" + encodeURIComponent(csvString);
 http.open("POST", url, true);
 
 //Send the proper header information along with the request
@@ -172,3 +173,9 @@ function toKayakUrl(city) {
 	var url = urlBase + "/" + city.replace(" ", "-") + "/" + date1 + "/" + date2 + "/" + "2guests";
 	return url;
 }
+
+function sayHi(){
+	console.log("hello");
+}
+sayHi();
+//window.location.href = toKayakUrl("Beijing");
