@@ -1,12 +1,15 @@
 //Port of KayakScrapers.java
-
+function KayakScrapers() {
 //test URL = http://www.kayak.com/hotels/London,England,United-Kingdom-c28501/2014-04-18/2014-04-19/2guests
 
 //coll data
 var rank = 1;
 var total_hotels = "";
 var asLength = 5;
-var date_create = new Date().toLocaleString().match(/\d+\/\d+\/\d+/)[0];
+/*var date_create = new Date().toLocaleString();
+date_create = date_create.match(/\d+\/\d+\/\d+/)[0];*/
+var now = new Date();
+var date_create = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + now.getUTCDate();
 
 var csvColumns = "date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels";
 for (var i=0; i<asLength; i++) {
@@ -114,11 +117,18 @@ console.log(csvString);*/
 //Data collection
 var http = new XMLHttpRequest();
 var url = "http://usdivad.com/l2/kayak/collect.php";
-var params = "data="+csvString;
+
+//For JSON params
+/*var jsonString = JSON.stringify({a:"orange", b:"apple"});
+var params = "data="+encodeURIComponent(jsonString);*/
+
+var params = "data=" + csvString;
 http.open("POST", url, true);
 
 //Send the proper header information along with the request
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//http.setRequestHeader("Content-type", "application/json");
+//http.setRequestHeader("Content-type", "application/json;charset=UTF-8")
 /*http.setRequestHeader("Content-length", params.length);
 http.setRequestHeader("Connection", "close");*/
 
@@ -132,6 +142,8 @@ http.send(params);
 /*$.post("collect.php", {data: csvString}, function(d) {
 	console.log("post");
 });*/
+
+} //end KayakScrapers
 
 
 function toCsvFormat(strings,alternate_sources) {
@@ -150,4 +162,13 @@ function removeCommas(s) {
 
 function copyToClipboard(s) {
 	window.prompt("Copy to clipboard: Cmd+C -> Enter", s);
+}
+
+function toKayakUrl(city) {
+	var urlBase = "http://www.kayak.com/hotels";
+	var now = new Date();
+	var date1 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+1);
+	var date2 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+2);
+	var url = urlBase + "/" + city.replace(" ", "-") + "/" + date1 + "/" + date2 + "/" + "2guests";
+	return url;
 }
