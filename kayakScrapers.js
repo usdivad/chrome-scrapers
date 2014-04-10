@@ -119,7 +119,16 @@ console.log(csvString);*/
 sendToCsv(csvString);
 
 
+//Get next city and redirect
+getCity();
+
+
 } //end KayakScrapers
+
+function getNextUrl() {
+	var nextCity = getCity();
+	var nextUrl = toKayakUrl(nextCity);
+}
 
 function getCity() {
 	var http = new XMLHttpRequest();
@@ -127,7 +136,17 @@ function getCity() {
 	http.open("GET", url, true);
 	http.onreadystatechange = function() {
 		if (http.readyState == 4 && http.status == 200) {
-			console.log(http.responseText);
+			//console.log(http.responseText);
+			var city = http.responseText;
+			var nextUrl = "http://usdivad.com/l2/kayak/scrape_exit.html";
+			if (city == "empty!") {
+				nextUrl = "http://usdivad.com/l2/kayak/scrape_exit.html";
+			}
+			else {
+				nextUrl = toKayakUrl(city);
+			}
+			console.log(nextUrl);
+			window.location.href = nextUrl;
 		}
 	}
 	http.send(null);
@@ -191,5 +210,10 @@ function toKayakUrl(city) {
 function sayHi(){
 	console.log("hello");
 }
-sayHi();
+
 //window.location.href = toKayakUrl("Beijing");
+
+window.onload = function() {
+	sayHi();
+	KayakScrapers();
+}

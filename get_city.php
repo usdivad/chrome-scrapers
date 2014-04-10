@@ -14,11 +14,18 @@
 	*/
 
 	//Text
-	$file = fopen('./testUrlList.txt', 'r');
-	//$reader = fread($file);
-	$line = fgets($file);
-	echo $line;
-	fclose($file);
+	$filename = './cities_slave.txt';
+	$file = file($filename);
+	$line = $file[0];
+	unset($file[0]);
+	if (!empty($line)) {
+		echo $line;
+		file_put_contents($filename, $file);
+	}
+	else {
+		echo "empty!";
+		file_put_contents($filename, file('./cities_master.txt'));
+	}
 
 	exit();
 ?>
