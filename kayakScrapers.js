@@ -3,15 +3,28 @@ function KayakScrapers() {
 console.log("Kayakyak");
 //test URL = http://www.kayak.com/hotels/London,England,United-Kingdom-c28501/2014-04-18/2014-04-19/2guests
 
-//coll data
-var city = window.location.href.match(/hotels\/.*(?=\/.+\/.+\/)/)[0].replace("hotels/", "");
-var rank = 1;
-var total_hotels = "";
+//Make sure we're in the right place
+if (window.location.href.match("hotels") == null) {
+	getCity(0);
+}
+
+//consts
 var asLength = 4;
+var resultsPerPage = 18; //estimate
+
+//coll data
+var city = "";
+cityStr = window.location.href.match(/hotels\/.*(?=\/.+\/.+\/)/)
+if (cityStr != null) {
+	city = cityStr[0].replace("hotels/", "");
+}
+var rank = "";
+var total_hotels = "";
 /*var date_create = new Date().toLocaleString();
 date_create = date_create.match(/\d+\/\d+\/\d+/)[0];*/
 var now = new Date();
 var date_create = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + now.getUTCDate();
+
 
 var csvColumns = "city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels";
 for (var i=0; i<asLength; i++) {
@@ -112,7 +125,14 @@ for (var i=0; i<hotelListings.length; i++) {
 
 	}
 
-	rank = i+1;
+	var pageNumberStr = window.location.href.match(/pn=\d+/g);
+	var pageNumber = 0;
+	if (pageNumberStr != null) {
+		pageNumberStr[0].replace(/\D/g, "");
+		if (!isNaN(parseInt(pageNumber))) {
+			rank = (pageNumber*resultsPerPage) + i+1;
+		}
+	}
 
 	var csvLine = (toCsvFormat([city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels],alternate_sources,alt_rest) + "\n");
 	//console.log((i+2) + ": " + csvLine);
@@ -127,39 +147,13 @@ console.log(csvString);*/
 sendToCsv(csvString);
 
 
-//Get next city and redirect
-getCity();
+//Get next city and redirect (this is now in ajax in sendToCsv)
+//getCity();
 
 
 function getNextUrl() {
-	var nextCity = getCity();
+	var nextCity = getCity(sleepMs);
 	var nextUrl = toKayakUrl(nextCity);
-}
-
-function getCity() {
-	var http = new XMLHttpRequest();
-	var url = "http://usdivad.com/l2/kayak/get_city.php";
-	http.open("GET", url, true);
-	http.onreadystatechange = function() {
-		if (http.readyState == 4 && http.status == 200) {
-			//console.log(http.responseText);
-			var city = http.responseText;
-			var nextUrl = "http://usdivad.com/l2/kayak/scrape_exit.html";
-			if (city == "empty!") {
-				nextUrl = "http://usdivad.com/l2/kayak/scrape_exit.html";
-			}
-			else {
-				nextUrl = toKayakUrl(city);
-			}
-			console.log(nextUrl);
-			window.clearTimeout(reloader);
-			window.setTimeout(function() {
-				window.location.href = nextUrl;
-			}, sleepMs);
-		}
-	}
-	http.send(null);
-	//http.open("GET")
 }
 
 
@@ -184,6 +178,9 @@ function sendToCsv(str) {
 	http.onreadystatechange = function() {//Call a function when the state changes.
 	    if(http.readyState == 4 && http.status == 200) {
 	        console.log(http.responseText);
+			clearReloader();
+	        console.log("Getting next city...");
+	        getCity(sleepMs);
 	    }
 	}
 	http.send(params);
@@ -208,15 +205,6 @@ function copyToClipboard(s) {
 	window.prompt("Copy to clipboard: Cmd+C -> Enter", s);
 }
 
-function toKayakUrl(city) {
-	var urlBase = "http://www.kayak.com/hotels";
-	var now = new Date();
-	var date1 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+1);
-	var date2 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+2);
-	var url = urlBase + "/" + city.replace(/\s/g, "-") + "/" + date1 + "/" + date2 + "/" + "2guests";
-	return url;
-}
-
 } //end KayakScrapers
 
 
@@ -224,25 +212,78 @@ function sayHi(){
 	console.log("hello");
 }
 
+//Retrieve city from list, has to go in global
+function getCity(sleep) {
+	var http = new XMLHttpRequest();
+	var url = "http://usdivad.com/l2/kayak/get_city.php";
+	http.open("GET", url, true);
+	http.onreadystatechange = function() {
+		if (http.readyState == 4 && http.status == 200) {
+			//console.log(http.responseText);
+			var city = http.responseText;
+			var nextUrl = "http://usdivad.com/l2/kayak/scrape_exit.html";
+			if (city == "empty!") {
+				nextUrl = "http://usdivad.com/l2/kayak/scrape_exit.html";
+			}
+			else {
+				nextUrl = toKayakUrl(city);
+			}
+			console.log(nextUrl);
+			//clearReloader();
+			window.setTimeout(function() {
+				window.location.href = nextUrl;
+			}, sleep);
+			console.log("Now I sleep for " + sleep/1000 + " seconds cos I'm not a bot");
+		}
+		else {
+			//console.log("getCity error!");
+		}
+	}
+	http.send(null);
+	//http.open("GET")
+}
+function toKayakUrl(city) {
+	var urlBase = "http://www.kayak.com/hotels";
+	var now = new Date();
+	var date1 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+1);
+	var date2 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+2);
+	var url = urlBase + "/" + city.replace(/\s/g, "-") + "/" + date1 + "/" + date2 + "/" + "2guests" + "?pn=0";
+	return url;
+}
+
+function clearReloader() {
+	window.clearTimeout(reloader);
+	console.log("Killed reloader");
+}
+
 //window.location.href = toKayakUrl("Beijing");
 
 /*Global poops needed to plant execution in case window.onload fails*/ 
 console.log("BEEF");
-var sleepMs = 60000+(Math.random()*10000);
-console.log("I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
-var reloader = window.setTimeout(function() {
+var sleepMs = 30000+(Math.random()*10000);
+var dice = Math.random();
+if (dice > 0.5) {
+	sleepMs += 30000;
+}
+/*var reloader = window.setTimeout(function() { 
 	console.log("reloading");
 	window.location.reload();
+}, sleepMs);*/
+
+var reloader = window.setTimeout(function() { //window.location.reload() triggers security!
+	getCity(0);
 }, sleepMs);
+console.log("From reloader: Now I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
 
 if (window.location.href.match("security") != null) {
 	console.log("I died");
 	alert("Scraper pause! (security check)");
-	window.clearTimeout(reloader);
+	clearReloader();
 }
 
 window.onload = function() {
 	sayHi();
-	KayakScrapers();
-
+	window.setTimeout(function() {
+		KayakScrapers();
+	}, 500);
 }

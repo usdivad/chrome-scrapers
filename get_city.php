@@ -17,7 +17,9 @@
 	$filename = './cities_slave.txt';
 	$file = file($filename);
 	$line = $file[0];
-	unset($file[0]); //this goes in collect.php now to prevent dropped lines
+	//take current city attempt and put it at the bottom; prevents "reloading" pages
+	unset($file[0]); 
+	array_push($file, $line);
 	if (!empty($line)) {
 		echo $line;
 		file_put_contents($filename, $file);

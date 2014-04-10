@@ -25,7 +25,8 @@
 	$cities = file($cities_name);
 	$line = $cities[0];
 	echo "removed ".$line;
-	unset($cities[0]);
+	//this goes in collect.php, not get_city, to prevent dropped lines
+	unset($cities[0]); //this is a permanent unset, unlike the one in get_city
 	file_put_contents($cities_name, $cities);
 
 	exit();
