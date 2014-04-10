@@ -1,12 +1,13 @@
 //Port of KayakScrapers.java
 function KayakScrapers() {
+console.log("Kayakyak");
 //test URL = http://www.kayak.com/hotels/London,England,United-Kingdom-c28501/2014-04-18/2014-04-19/2guests
 
 //coll data
 var city = window.location.href.match(/hotels\/.*(?=\/.+\/.+\/)/)[0].replace("hotels/", "");
 var rank = 1;
 var total_hotels = "";
-var asLength = 5;
+var asLength = 4;
 /*var date_create = new Date().toLocaleString();
 date_create = date_create.match(/\d+\/\d+\/\d+/)[0];*/
 var now = new Date();
@@ -16,6 +17,7 @@ var csvColumns = "city,date_create,rank,advertised,hotel_name,hotel_source,ad_he
 for (var i=0; i<asLength; i++) {
 	csvColumns += ",alt"+(i+1);
 }
+csvColumns += ",alt_rest"
 csvColumns += "\n";
 var csvString = "";
 //csvString += csvColumns;
@@ -44,6 +46,7 @@ for (var i=0; i<hotelListings.length; i++) {
 	var rating_reviews = "";
 	var num_reviews = "";
 	var alternate_sources = [];
+	var alt_rest = "";
 	for (var j=0; j<asLength; j++) {
 		alternate_sources[j] = "";
 	}
@@ -100,13 +103,18 @@ for (var i=0; i<hotelListings.length; i++) {
 				alternate_sources[j] = "";
 			}
 		}
+		alt_rest_obj = listing.getElementsByClassName("allInlineItems")[0];
+		if (typeof alt_rest_obj != "undefined") {
+			alt_rest = alt_rest_obj.innerText;
+		}
+		//console.log(alt_rest)
 		//console.log(alternate_sources);
 
 	}
 
 	rank = i+1;
 
-	var csvLine = (toCsvFormat([city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels],alternate_sources) + "\n");
+	var csvLine = (toCsvFormat([city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels],alternate_sources,alt_rest) + "\n");
 	//console.log((i+2) + ": " + csvLine);
 	csvString += csvLine;
 
@@ -122,8 +130,6 @@ sendToCsv(csvString);
 //Get next city and redirect
 getCity();
 
-
-} //end KayakScrapers
 
 function getNextUrl() {
 	var nextCity = getCity();
@@ -146,7 +152,10 @@ function getCity() {
 				nextUrl = toKayakUrl(city);
 			}
 			console.log(nextUrl);
-			window.location.href = nextUrl;
+			window.clearTimeout(reloader);
+			window.setTimeout(function() {
+				window.location.href = nextUrl;
+			}, sleepMs);
 		}
 	}
 	http.send(null);
@@ -180,13 +189,14 @@ function sendToCsv(str) {
 	http.send(params);
 }
 
-function toCsvFormat(strings,alternate_sources) {
+function toCsvFormat(strings,alternate_sources,alt_rest) {
 	var s = "";
 	for (var i=0; i<strings.length; i++) {
 		s += removeCommas(strings[i].toString()) + ",";
 		//console.log(strings[i]);
 	}
 	s += alternate_sources.join(",").replace(/\s/g, "");
+	s += ","+removeCommas(alt_rest);
 	return s;
 }
 
@@ -203,9 +213,12 @@ function toKayakUrl(city) {
 	var now = new Date();
 	var date1 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+1);
 	var date2 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+2);
-	var url = urlBase + "/" + city.replace(" ", "-") + "/" + date1 + "/" + date2 + "/" + "2guests";
+	var url = urlBase + "/" + city.replace(/\s/g, "-") + "/" + date1 + "/" + date2 + "/" + "2guests";
 	return url;
 }
+
+} //end KayakScrapers
+
 
 function sayHi(){
 	console.log("hello");
@@ -213,7 +226,23 @@ function sayHi(){
 
 //window.location.href = toKayakUrl("Beijing");
 
+/*Global poops needed to plant execution in case window.onload fails*/ 
+console.log("BEEF");
+var sleepMs = 60000+(Math.random()*10000);
+console.log("I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
+var reloader = window.setTimeout(function() {
+	console.log("reloading");
+	window.location.reload();
+}, sleepMs);
+
+if (window.location.href.match("security") != null) {
+	console.log("I died");
+	alert("Scraper pause! (security check)");
+	window.clearTimeout(reloader);
+}
+
 window.onload = function() {
 	sayHi();
 	KayakScrapers();
+
 }
