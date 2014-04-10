@@ -186,6 +186,32 @@ function sendToCsv(str) {
 	http.send(params);
 }
 
+function logTime() {
+	var http = new XMLHttpRequest();
+	var url = "http://usdivad.com/l2/kayak/log_time.php";
+
+	//For JSON params
+	/*var jsonString = JSON.stringify({a:"orange", b:"apple"});
+	var params = "data="+encodeURIComponent(jsonString);*/
+
+	var params = "data=" + encodeURIComponent(sleepMs);
+	http.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//http.setRequestHeader("Content-type", "application/json");
+	//http.setRequestHeader("Content-type", "application/json;charset=UTF-8")
+	/*http.setRequestHeader("Content-length", params.length);
+	http.setRequestHeader("Connection", "close");*/
+
+	http.onreadystatechange = function() {//Call a function when the state changes.
+	    if(http.readyState == 4 && http.status == 200) {
+	        console.log("time logged");
+	    }
+	}
+	http.send(params);
+}
+
 function toCsvFormat(strings,alternate_sources,alt_rest) {
 	var s = "";
 	for (var i=0; i<strings.length; i++) {
@@ -232,6 +258,7 @@ function getCity(sleep) {
 			//clearReloader();
 			window.setTimeout(function() {
 				window.location.href = nextUrl;
+				//logTime();
 			}, sleep);
 			console.log("Now I sleep for " + sleep/1000 + " seconds cos I'm not a bot");
 		}
@@ -260,11 +287,42 @@ function clearReloader() {
 
 /*Global poops needed to plant execution in case window.onload fails*/ 
 console.log("BEEF");
-var sleepMs = 30000+(Math.random()*10000);
-var dice = Math.random();
+
+var sleepMs = (10+(Math.random()*30))*1000; //backup method
+/*var dice = Math.random();
 if (dice > 0.5) {
-	sleepMs += 30000;
+	sleepMs = ;
 }
+else {
+	sleepMs = 
+}*/
+
+function getSleep() {
+	var http = new XMLHttpRequest();
+	var url = "http://usdivad.com/l2/kayak/get_sleep.php";
+	http.open("GET", url, true);
+	http.onreadystatechange = function() {
+		if (http.readyState == 4 && http.status == 200) {
+			//console.log(http.responseText);
+			var sleepTime = http.responseText;
+			if (sleepTime != null) {
+				if (!isNaN(parseInt(sleepTime))) {
+					sleepMs = parseInt(sleepTime) + Math.random()*5;
+					console.log("reset sleep time from get_sleep");
+					clearReloader();
+					reloader = window.setTimeout(function() { //window.location.reload() triggers security!
+						getCity(0);
+					}, sleepMs);
+					console.log("From reloader: Now I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
+				}
+				else {console.log("NaN error");}
+			}
+
+		}
+	}
+	http.send(null);
+}
+
 /*var reloader = window.setTimeout(function() { 
 	console.log("reloading");
 	window.location.reload();
@@ -274,6 +332,7 @@ var reloader = window.setTimeout(function() { //window.location.reload() trigger
 	getCity(0);
 }, sleepMs);
 console.log("From reloader: Now I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
+getSleep();
 
 if (window.location.href.match("security") != null) {
 	console.log("I died");

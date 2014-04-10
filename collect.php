@@ -20,14 +20,19 @@
 	echo "hoho\n";
 	echo "data is ".$data;
 
+
+
 	//Remove the current city (cos we've already collected the data)
+	//The current one is the one at the end (since last n get_city's will have placed them there)
 	$cities_name = './cities_slave.txt';
 	$cities = file($cities_name);
-	$line = $cities[0];
+	$line = end($cities);
 	echo "removed ".$line;
 	//this goes in collect.php, not get_city, to prevent dropped lines
-	unset($cities[0]); //this is a permanent unset, unlike the one in get_city
+	array_pop($cities); //this is a permanent unset, unlike the one in get_city
 	file_put_contents($cities_name, $cities);
+
+
 
 	exit();
 ?>
