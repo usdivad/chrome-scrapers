@@ -1,336 +1,336 @@
-London
-New York City
-Shanghai
-Dubai
-Paris
-Beijing
-San Francisco
-Bangkok
-Chicago
-Atlanta
-Toronto
-Istanbul
-Las Vegas
-Vancouver
-Houston
-Hong Kong
-Munich
-Washington DC
-Frankfurt
-Rome
-Dallas
-Cologne
-Düsseldorf
-Bali
-Berlin
-Singapore
-Sydney
-Orlando
-San Diego
-Boston
-Los Angeles
-Abu Dhabi
-New Orleans
-Seoul
-Tokyo
-Amsterdam
-Stuttgart
-Barcelona
-Montreal
-Vienna
-Brussels
-Milan
-Philadelphia
-Mumbai
-Bombay
-Brisbane
-Calgary
-Edmonton
-Phuket
-Sao Paulo
-Miami
-Miami Beach
-Taipei
-San Antonio
-Sanya
-Seattle
-Venice
-Arlington, VA
-Arlington, TX
-Cairo
-Fort Lauderdale
-Guangzhou
-Jakarta
-Kuala Lumpur
-Mexico City
-Moscow
-New Delhi
-Scottsdale
-St. Petersburg
-Alexandria
-Bangalore
-Denver
-Ko Samui
-Luzon
-Madrid
-Phoenix
-Leipzig
-Dresden
-Rio de Janeiro
-Tianjin
-Chennai
-Madras
-Doha
-Dublin
-Geneva
-Hamburg
-Marrakech
-Oahu
-Sharm El Sheikh
-Buenos Aires
-Cancun
-Florence
-Maui
-Minneapolis
-Nashville
-Saint Louis
-Shenzhen
-Melbourne
-Austin
-Birmingham
-Lisbon
-Macau
-Majorca
-Zurich
-Baltimore
-Hyderabad
-Indianapolis
-Jeddah
-Lower Saxony
-Hannover 
-Osaka
-Portland
-Prague
-Stockholm
-Tampa
-Charlotte
-Edinburgh
-Hangzhou
-Sicily
-Viti Levu
-Amman
-Budapest
-Chiba
-Tokyo Bay
-Chongqing
-Okinawa
-Mainz
-Riyadh
-Siem Reap
-Xiamen
-Chengdu
-Columbus
-Hanoi
-Hyogo
-Kobe
-Jaipur
-Key West
-Kyoto
-Lima
-Mecca
-Monte Carlo
-Naples
-Ningbo
-Pittsburgh
-San Juan
-Santa Monica
-Sardinia
-Suzhou
-Warsaw
-Wuxi
-Auckland 
-Baku
-Cambridge
-Cape Town
-Charleston
-Cleveland
-Durham
-Fort Worth
-Ho Chi Minh City
-Hawaii
-Malta
-Kanagawa
-Kansas City
-Kuwait City
-Lyon
-Marseille
-Panama City
-Pune
-Salt Lake City
-Santiago
-Savannah
-Tucson
-Xi'an
-Athens
-Beverly Hills
-Boca Raton
-Bogota
-Bora Bora
-Casablanca
-Corsica
-Cusco
-Dongguan
-Fukuoka
-Glasgow
-Guam
-Gurgaon
-Hokkaido
-Sapporo
-Irving
-Jacksonville
-Kauai
-Calcutta
-Luxembourg City
-Manama
-Newport Beach
-Nice
-Palm Springs, CA
-Palm Springs, FL
-Playa del Carmen
-Mayakoba
-Queenstown
-Riga
-Roissy-en-France
-Charles de Gaulle Airport
-Rosemont
-San Jose del Cabo
-Santa Barbara
-Shenyang
-Acapulco
-Albuquerque
-Anaheim
-Ankara
-Antibes
-Asheville
-Beaver Creek
-Bloomington
-Bruges
-Clearwater
-Dalian
-Detroit
-Giza
-Guiyang
-Herndon
-Hua Hin
-Hurghada
-Kiev
-Kota Kinabalu
-Langkawi
-Long Beach, CA
-Lucerne
-Rostock
-Medina
-Montreux
-Nanjing
-Newark
-Park City
-Pointe Aux Piments
-Quito
-Ras Al Khaimah
-Rochester
-Santo Domingo
-Strasbourg
-Tallinn
-Thuringia
-Western Australia
-Yogyakarta
-Aberdeen
-Anchorage
-Annapolis
-Baton Rouge
-Beirut
-Bellevue
-Biarritz
-Bratislava
-Cali
-Carlsbad
-Carmel
-Changzhou
-Cincinnati
-Colorado Springs
-Copenhagen
-Costa Mesa
-Fusong County
-Gordes
-Greensboro
-Guayaquil
-Helsinki
-Hilton Head
-Huizhou
-Izmir
-Kochi
-Krabi Town
-La Defense
-Linthicum Heights
-Louisville
-Luxor
-Mahe Island
-Manchester
-Memphis
-Mendoza
-Milwaukee
-Muscat
-Napa
-Palm - Eagle Beach
-Pasadena
-Punta Cana
-Qingdao
-Raleigh
-Rancho Mirage
-Saint-Tropez
-San Jose
-Santa Clara
-Santa Fe
-Sedona
-Sofia
-Bahia
-Rio Grande do Sul
-Bento Gonçalves
-Tel Aviv
-The Hague
-Tulsa
-Tysons Corner
-Tysons Corner
-Udaipur
-Vail
-Vilamoura
-Vilnius
-Oslo
-Auckland
-Cannes
-Nairobi
-Guadalajara
-Guatemala City
-Reykjavik
-Nha Trang
-Bucharest
-Caracas
-Lagos
-Maldives
-Belle Mare
-Hayman Island
-Paradise Island
-West Hollywood
-Reims
-Henderson
-Reno
-Tunica
-Soufriere
-Vagaru Island
-West End Village
-Zihuatanejo
-Ascot
-Mestre
-Sinquerim
-Chiang Saen
-Jean
+London,England,United-Kingdom
+New-York-City,NY
+Shanghai,SH,China
+Dubai,United-Arab-Emirates
+Paris,France
+Beijing,BJ,China
+San-Francisco,CA
+Bangkok,Thailand
+Chicago,IL
+Atlanta,GA
+Toronto,ON,Canada
+Istanbul,Turkey
+Las-Vegas,NV
+Vancouver,BC,Canada
+Houston,TX
+Hong-Kong,Hong-Kong
+Munich,Germany
+Washington,DC
+Frankfurt-am-Main,Germany
+Rome,Italy
+Dallas,TX
+Cologne,Germany
+Dusseldorf,Germany
+Denpasar-Bali,Indonesia
+Berlin,Germany
+Singapore,Singapore
+Sydney,NSW,Australia
+Orlando,FL
+San-Diego,CA
+Boston,MA
+Los-Angeles,CA
+Abu-Dhabi,United-Arab-Emirates
+New-Orleans,LA
+Seoul,South-Korea
+Tokyo,Japan
+Amsterdam,Netherlands
+Stuttgart,Germany
+Barcelona,Spain
+Montreal,QC,Canada
+Vienna,Austria
+Brussels,Belgium
+Milan,Italy
+Philadelphia,PA
+Mumbai,India
+Bombay,India
+Brisbane,QLD,Australia
+Calgary,AB,Canada
+Edmonton,AB,Canada
+Phuket,Thailand
+Sao-Paulo,Brazil
+Miami,FL
+Miami-Beach,FL
+Taipei,Taiwan
+San-Antonio,TX
+Sanya,HA,China
+Seattle,WA
+Venice,Italy
+Arlington,VA
+Arlington,TX
+Cairo,Egypt
+Fort-Lauderdale,FL
+Guangzhou,GD,China
+Jakarta,Indonesia
+Kuala-Lumpur,Malaysia
+Mexico-City,Distrito-Federal,Mexico
+Moscow,Russia
+New-Delhi,India
+Scottsdale,AZ
+St-Petersburg,Russia
+Alexandria,VA
+Bangalore,India
+Denver,CO
+Ko-Samui,Thailand
+Luzon-Residence-Service,Fortaleza,Brazil
+Madrid,Spain
+Phoenix,AZ
+Leipzig,Germany
+Dresden,Germany
+Rio-de-Janeiro,Brazil
+Tianjin,TJ,China
+Chennai,India
+Madras,India
+Doha,Qatar
+Dublin,Ireland
+Geneva,Switzerland
+Hamburg,Germany
+Marrakech,Morocco
+Oahu,HI
+Sharm-el-Sheikh,Egypt
+Buenos-Aires,Argentina
+Cancun,Quintana-Roo,Mexico
+Florence,Italy
+Maui,HI
+Minneapolis,MN
+Nashville,TN
+Saint-Louis,MO
+Shenzhen,GD,China
+Melbourne,VIC,Australia
+Austin,TX
+Birmingham,England,United-Kingdom
+Lisbon,Portugal
+Macau,Macao
+Palma-Majorca,Spain
+Zurich,Switzerland
+Baltimore,MD
+Hyderabad,India
+Indianapolis,IN
+Jeddah,Saudi-Arabia
+Nienburg-Lower-Saxony,Germany
+Hannover,Germany
+Osaka,Japan
+Portland,OR
+Prague,Czech-Republic
+Stockholm,Sweden
+Tampa,FL
+Charlotte,NC
+Edinburgh,Scotland,United-Kingdom
+Hangzhou,ZJ,China
+Sicily,Italy
+Viti-Levu,Fiji
+Amman,Jordan
+Budapest,Hungary
+Chiba,Japan
+Urayasu,Japan
+Chongqing,CQ,China
+Okinawa,Japan
+Mainz,Germany
+Riyadh,Saudi-Arabia
+Siem-Reap,Cambodia
+Xiamen,FJ,China
+Chengdu,SC,China
+Columbus,OH
+Hanoi,Vietnam
+Hyogo,Japan
+Kobe,Japan
+Jaipur,India
+Key-West,FL
+Kyoto,Japan
+Lima,Peru
+Mecca,Saudi-Arabia
+Monte-Carlo,Monaco
+Naples,Italy
+Ningbo,ZJ,China
+Pittsburgh,PA
+San-Juan,Puerto-Rico
+Santa-Monica,CA
+Sardinia,Italy
+Suzhou,JS,China
+Warsaw,Poland
+Wuxi,JS,China
+Auckland,New-Zealand
+Baku,Azerbaijan
+Cambridge,MA
+Cape-Town,South-Africa
+Charleston,SC
+Cleveland,OH
+Durham,Durham,United-Kingdom
+Fort-Worth,TX
+Ho-Chi-Minh-City,Vietnam
+Hawaii-Big-Island,HI
+Malta,Malta
+Kanagawa,Japan
+Kansas-City,KS
+Kuwait-City,Kuwait
+Lyon,France
+Marseille,France
+Panama-City,Panama
+Pune,India
+Salt-Lake-City,UT
+Santiago,Chile
+Savannah,GA
+Tucson,AZ
+Xian,SA,China
+Athens,Greece
+Beverly-Hills,CA
+Boca-Raton,FL
+Bogota,Colombia
+Bora-Bora,French-Polynesia
+Casablanca,Morocco
+Corsica,France
+Cusco,Peru
+Dongguan,GD,China
+Fukuoka,Japan
+Glasgow,Scotland,United-Kingdom
+Tamuning,Guam
+Gurgaon,India
+Hokkaido,Japan
+Sapporo,Japan
+Irving,TX
+Irving,TX
+Kauai,HI
+Calcutta,India
+Luxembourg-City,Luxembourg
+Manama,Bahrain
+Newport-Beach,CA
+Nice,France
+Palm-Springs,CA
+Palm-Springs,FL
+Playa-del-Carmen,Quintana-Roo,Mexico
+Playa-del-Carmen,QR,Mexico
+Queenstown,Singapore
+Riga,Latvia
+Roissy-en-France,France
+Roissy-en-France,France
+Rosemont,IL
+San-Jose-Del-Cabo,Baja-California-Sur,Mexico
+Santa-Barbara,CA
+Shenyang,China,Shenyang-SHE
+Acapulco,Guerrero,Mexico
+Albuquerque,NM
+Anaheim,CA
+Ankara,Turkey
+Antibes,France
+Asheville,NC
+Beaver-Creek,CO
+Bloomington,MN
+Bruges,Belgium
+Clearwater,FL
+Dalian,LN,China
+Detroit,MI
+Giza,Egypt
+Guiyang,GZ,China
+Herndon,VA
+Hua-Hin,Thailand
+Hurghada,Egypt
+Kiev,Ukraine
+Kota-Kinabalu,Malaysia
+Langkawi,Malaysia
+Long-Beach,CA
+Lucerne,Switzerland
+Rostock,Germany
+Medina,Saudi-Arabia
+Montreux,Switzerland
+Nanjing,JS,China
+Newark,NJ
+Park-City,UT
+The-Oberoi-Mauritius,Pointe-Aux-Piments,Mauritius
+Quito,Ecuador
+Ras-Al-Khaimah,United-Arab-Emirates
+Rochester,NY
+Santo-Domingo,Dominican-Republic
+Strasbourg,France
+Tallinn,Estonia
+Steinach-Thuringia,Germany
+Perth,Western-Australia,Australia
+Yogyakarta,Indonesia
+Aberdeen,Scotland,United-Kingdom
+Anchorage,AK
+Annapolis,MD
+Baton-Rouge,LA
+Beirut,Lebanon
+Bellevue,WA
+Biarritz,France
+Bratislava,Slovakia
+Cali,Colombia
+Carlsbad,Czech-Republic
+Carmel,IN
+Changzhou,JS,China
+Cincinnati,OH
+Colorado-Springs,CO
+Copenhagen,Denmark
+Costa-Mesa,CA
+Fusong,JL,China
+Gordes,France
+Greensboro,NC
+Guayaquil,Ecuador
+Helsinki,Finland
+Hilton-Head,SC
+Huizhou,GD,China
+Izmir,Turkey
+Kochi,India
+Krabi-Town,Thailand
+La-Defense,France
+Linthicum-Heights,MD
+Louisville,KY
+Luxor,Egypt
+Mahe-Island,Seychelles
+Manchester,England,United-Kingdom
+Memphis,TN
+Mendoza,Argentina
+Milwaukee,WI
+Muscat,Oman
+Napa,CA
+Eagle-Beach,Aruba
+Pasadena,CA
+Punta-Cana,Dominican-Republic
+Qingdao,SD,China
+Raleigh,NC
+Rancho-Mirage,CA
+Saint-Tropez,France
+San-Jose,CA
+Santa-Clara,CA
+Santa-Fe-Springs,CA
+Sedona,AZ
+Sofia,Bulgaria
+Salvador,Brazil
+Salvador,Brazil
+Bento-Goncalves,Brazil
+Tel-Aviv-Yafo,Israel
+The-Hague,Netherlands
+Tulsa,OK
+Mclean,VA
+Vienna,VA
+Udaipur,India
+Vail,CO
+Vilamoura,Portugal
+Vilnius,Lithuania
+Oslo,Norway
+Auckland,New-Zealand
+Cannes,France
+Nairobi,Kenya
+Guadalajara,Jalisco,Mexico
+Guatemala-City,Guatemala
+Reykjavik,Iceland
+Nha-Trang,Vietnam
+Bucharest,Romania
+Caracas,Venezuela
+Lagos,Portugal
+Maldives,Maldives
+Belle-Mare,Mauritius
+Hayman-Island,QLD,Australia
+Paradise-Island,The-Bahamas
+West-Hollywood,CA
+Reims,France
+Henderson,NV
+Reno,NV
+Tunica,MS
+Soufriere,Saint-Lucia
+Vagaru,Maldives
+West-End-Village,Anguilla
+Zihuatanejo,Guerrero,Mexico
+Ascot,West-Berkshire,United-Kingdom
+Mestre,Italy
+Sinquerim,India
+Chiang-Saen,Thailand
+Jean,NV
