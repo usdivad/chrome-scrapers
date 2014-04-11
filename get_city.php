@@ -35,7 +35,7 @@
 	$sleepLine = $sleepTimes[0];
 
 	$timelog = fopen('./timelog.txt', 'a');
-	fwrite($timelog, $sleepLine." for getting ".$line); //no .PHP_EOL
+	fwrite($timelog, 'Sleep time of ~'.rTrim($sleepLine)."ms for getting ".$line." on ".date(DATE_RFC2822)); //no .PHP_EOL
 	fclose($timelog);
 
 	exit();

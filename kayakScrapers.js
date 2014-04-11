@@ -190,21 +190,12 @@ function logTime() {
 	var http = new XMLHttpRequest();
 	var url = "http://usdivad.com/l2/kayak/log_time.php";
 
-	//For JSON params
-	/*var jsonString = JSON.stringify({a:"orange", b:"apple"});
-	var params = "data="+encodeURIComponent(jsonString);*/
-
 	var params = "data=" + encodeURIComponent(sleepMs);
 	http.open("POST", url, true);
 
-	//Send the proper header information along with the request
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	//http.setRequestHeader("Content-type", "application/json");
-	//http.setRequestHeader("Content-type", "application/json;charset=UTF-8")
-	/*http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");*/
 
-	http.onreadystatechange = function() {//Call a function when the state changes.
+	http.onreadystatechange = function() {
 	    if(http.readyState == 4 && http.status == 200) {
 	        console.log("time logged");
 	    }
@@ -223,8 +214,8 @@ function toCsvFormat(strings,alternate_sources,alt_rest) {
 	return s;
 }
 
-function removeCommas(s) {
-	return s.replace(/,/g, "");
+function removeCommas(s) { //or rather, commas to spaces
+	return s.replace(/,/g, " ");
 }
 
 function copyToClipboard(s) {
@@ -285,7 +276,10 @@ function clearReloader() {
 
 //window.location.href = toKayakUrl("Beijing");
 
-/*Global poops needed to plant execution in case window.onload fails*/ 
+/*
+ * GLOBAL POOPS
+ * needed to plant execution in case window.onload fails
+ */ 
 console.log("BEEF");
 
 var sleepMs = (10+(Math.random()*30))*1000; //backup method
@@ -321,6 +315,21 @@ function getSleep() {
 		}
 	}
 	http.send(null);
+}
+
+function sendSecurityAlert() {
+	var now = new Date().toString();
+	var http = new XMLHttpRequest();
+	var url = "http://usdivad.com/l2/kayak/security.php";
+	var params = "data=" + "Security check encountered at " + encodeURIComponent(now);
+	http.open("POST", url, true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.onreadystatechange = function() {
+	    if(http.readyState == 4 && http.status == 200) {
+	        console.log("security check at " + now);
+	    }
+	}
+	http.send(params);
 }
 
 /*var reloader = window.setTimeout(function() { 
