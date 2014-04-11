@@ -4,7 +4,7 @@
 
 	$data = $_POST['data'];
 	$file = fopen('./timelog.txt', 'a');
-	fwrite($file, $data); //no .PHP_EOL
+	fwrite($file, $data.PHP_EOL);
 	fclose($file);
 	exit();
 ?>

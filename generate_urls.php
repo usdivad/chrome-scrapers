@@ -14,6 +14,8 @@
     fwrite($urlList, $urlsToAdd);
     fclose($urlList);
 
+    echo 'converted';
+
 
     //
     function paginateUrls($city, $numPages) {

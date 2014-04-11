@@ -146,7 +146,6 @@ console.log(csvString);*/
 //Data collection
 sendToCsv(csvString);
 
-
 //Get next city and redirect (this is now in ajax in sendToCsv)
 //getCity();
 
@@ -355,6 +354,7 @@ if (window.location.href.match("security") != null) {
 	console.log("I died");
 	alert("Scraper pause! (security check)");
 	clearReloader();
+	sendSecurityAlert();
 }
 
 window.onload = function() {
