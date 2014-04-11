@@ -26,12 +26,12 @@ var now = new Date();
 var date_create = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + now.getUTCDate();
 
 
-var csvColumns = "city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels";
+/*var csvColumns = "city,date_create,timestamp,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels";
 for (var i=0; i<asLength; i++) {
 	csvColumns += ",alt"+(i+1);
 }
 csvColumns += ",alt_rest"
-csvColumns += "\n";
+csvColumns += "\n";*/
 var csvString = "";
 //csvString += csvColumns;
 
@@ -66,9 +66,18 @@ for (var i=0; i<hotelListings.length; i++) {
 	var listing = hotelListings[i];
 	if (listing.getElementsByClassName("inlineAdInner").length > 0) {
 		advertised = true;
-		ad_headline = listing.getElementsByClassName("inlineAdHeadline")[0].innerText;
-		ad_source = listing.getElementsByClassName("inlineAdSite")[0].innerText;
-		price = listing.getElementsByClassName("inlineAdBookPrice")[0].innerText;
+		ad_headline_elm = listing.getElementsByClassName("inlineAdHeadline")[0]
+		if (typeof ad_headline_elm != "undefined") {
+			ad_headline = ad_headline_elm.innerText;
+		}
+		ad_source_elm = listing.getElementsByClassName("inlineAdSite")[0];
+		if (typeof ad_source_elm != "undefined") {
+			ad_source = ad_source_elm.innerText;
+		}
+		price_elm = listing.getElementsByClassName("inlineAdBookPrice")[0];
+		if (typeof price_elm != "undefined") {
+			price = price_elm.innerText;
+		}
 
 		hotel_name = "";
 		hotel_source = "";
@@ -78,7 +87,7 @@ for (var i=0; i<hotelListings.length; i++) {
 	}
 	else {
 		advertised = false;
-		hotel_name_elm = listing.getElementsByClassName("hotelname")[0]
+		hotel_name_elm = listing.getElementsByClassName("hotelname")[0];
 		if (typeof hotel_name_elm != "undefined") {
 			hotel_name = hotel_name_elm.getAttribute("title");
 		}
@@ -89,10 +98,16 @@ for (var i=0; i<hotelListings.length; i++) {
 		var underprice = listing.getElementsByClassName("underprice")[0];
 		
 		if (typeof underprice != "undefined") {
-			hotel_source = underprice.getElementsByTagName("span")[0].innerText.replace(" ", "");
+			hotel_source_elm = underprice.getElementsByTagName("span")[0];
+			if (typeof hotel_source_elm != "undefined") {
+				hotel_source = hotel_source_elm.innerText.replace(" ", "");
+			}
 		}
 
-		price = listing.getElementsByClassName("bigpricelink")[0].innerText;
+		price_elm = listing.getElementsByClassName("bigpricelink")[0];
+		if (typeof price_elm != "undefined") {
+			price = price_elm.innerText;
+		}
 
 
 		var starStr_elm = listing.getElementsByClassName("starsprite")[0];
@@ -296,6 +311,7 @@ function clearReloader() {
 	console.log("Killed reloader");
 }
 
+//Get sleep from sleep_times.txt file
 function getSleep() {
 	var http = new XMLHttpRequest();
 	var url = "http://usdivad.com/l2/kayak/get_sleep.php";
@@ -306,7 +322,7 @@ function getSleep() {
 			var sleepTime = http.responseText;
 			if (sleepTime != null) {
 				if (!isNaN(parseInt(sleepTime))) {
-					sleepMs = parseInt(sleepTime) + Math.random()*10000;
+					sleepMs = parseInt(sleepTime) + Math.random()*2000;
 					console.log("reset sleep time from get_sleep");
 					clearReloader();
 					reloader = window.setTimeout(function() { //window.location.reload() triggers security!
@@ -314,7 +330,7 @@ function getSleep() {
 					}, sleepMs);
 					console.log("From reloader: Now I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
 				}
-				else {console.log("NaN error");}
+				else {console.log("NaN error; keep the old time");}
 			}
 
 		}
@@ -346,7 +362,7 @@ function sendSecurityAlert() {
  */ 
 console.log("BEEF");
 
-var sleepMs = (60+(Math.random()*30))*1000; //backup method
+var sleepMs = (5+(Math.random()*10))*1000; //backup method
 /*var dice = Math.random();
 if (dice > 0.5) {
 	sleepMs = ;
@@ -364,7 +380,7 @@ var reloader = window.setTimeout(function() { //window.location.reload() trigger
 	getCity(0);
 }, sleepMs);
 console.log("From reloader: Now I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
-getSleep();
+//getSleep();
 
 if (window.location.href.match("security") != null) {
 	console.log("I died");
