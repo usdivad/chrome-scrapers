@@ -13,6 +13,13 @@
 	echo $n;
 	*/
 
+	//time/log stuff
+	$sleepTimes = file('./sleep_times.txt');
+	$sleepLine = $sleepTimes[0];
+
+	$timelog = fopen('./timelog.txt', 'a');
+	fwrite($timelog, 'Sleep '.rTrim($sleepLine)."ms before getting ".rTrim($line)." on ".date(DATE_RFC2822).PHP_EOL);
+
 	//Text
 	$filename = './cities_slave.txt';
 	$file = file($filename);
@@ -27,15 +34,10 @@
 	else {
 		echo "empty!";
 		file_put_contents($filename, file('./cities_master.txt'));
+		fwrite($timelog, '--Reset cities_slave.txt on '.date(DATE_RFC2822).'!--'.PHP_EOL);
 	}
 
 
-	//time/log stuff
-	$sleepTimes = file('./sleep_times.txt');
-	$sleepLine = $sleepTimes[0];
-
-	$timelog = fopen('./timelog.txt', 'a');
-	fwrite($timelog, 'Sleep '.rTrim($sleepLine)."ms before getting ".rTrim($line)." on ".date(DATE_RFC2822).PHP_EOL);
 	fclose($timelog);
 
 	exit();
