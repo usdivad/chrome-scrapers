@@ -274,23 +274,6 @@ function clearReloader() {
 	console.log("Killed reloader");
 }
 
-//window.location.href = toKayakUrl("Beijing");
-
-/*
- * GLOBAL POOPS
- * needed to plant execution in case window.onload fails
- */ 
-console.log("BEEF");
-
-var sleepMs = (10+(Math.random()*30))*1000; //backup method
-/*var dice = Math.random();
-if (dice > 0.5) {
-	sleepMs = ;
-}
-else {
-	sleepMs = 
-}*/
-
 function getSleep() {
 	var http = new XMLHttpRequest();
 	var url = "http://usdivad.com/l2/kayak/get_sleep.php";
@@ -331,6 +314,24 @@ function sendSecurityAlert() {
 	}
 	http.send(params);
 }
+
+//window.location.href = toKayakUrl("Beijing");
+
+/*
+ * GLOBAL POOPS
+ * needed to plant execution in case window.onload fails
+ * but this is all w/in the extension load anyways; not accessible by user
+ */ 
+console.log("BEEF");
+
+var sleepMs = (60+(Math.random()*30))*1000; //backup method
+/*var dice = Math.random();
+if (dice > 0.5) {
+	sleepMs = ;
+}
+else {
+	sleepMs = 
+}*/
 
 /*var reloader = window.setTimeout(function() { 
 	console.log("reloading");
