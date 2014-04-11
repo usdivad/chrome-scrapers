@@ -5,7 +5,7 @@ console.log("Kayakyak");
 
 //Make sure we're in the right place
 if (window.location.href.match("hotels") == null) {
-	getCity(0);
+	getCity(1000);
 }
 
 //consts
@@ -211,7 +211,7 @@ function sendToCsv(str) {
 	        console.log(http.responseText);
 			clearReloader();
 	        console.log("Getting next city...");
-	        getCity(sleepMs);
+	        getCity(sleepMs/2); //don't have to worry about datacoll, only ratelimit
 	    }
 	}
 	http.send(params);
@@ -327,7 +327,7 @@ function getSleep() {
 					console.log("reset sleep time from get_sleep");
 					clearReloader();
 					reloader = window.setTimeout(function() { //window.location.reload() triggers security!
-						getCity(0);
+						getCity(1000);
 					}, sleepMs);
 					console.log("From reloader: Now I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
 				}
@@ -363,7 +363,10 @@ function sendSecurityAlert() {
  */ 
 console.log("BEEF");
 
-var sleepMs = (5+(Math.random()*10))*1000; //backup method
+//w.r.t. sleepMs, if it's too low you'll end up making too many unsuccessful requests
+var sleepMs = (7+(Math.random()*8))*1000; //backup method
+
+
 /*var dice = Math.random();
 if (dice > 0.5) {
 	sleepMs = ;
@@ -378,7 +381,7 @@ else {
 }, sleepMs);*/
 
 var reloader = window.setTimeout(function() { //window.location.reload() triggers security!
-	getCity(0);
+	getCity(1000);
 }, sleepMs);
 console.log("From reloader: Now I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
 //getSleep();
