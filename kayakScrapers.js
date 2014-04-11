@@ -307,7 +307,7 @@ function getSleep() {
 			var sleepTime = http.responseText;
 			if (sleepTime != null) {
 				if (!isNaN(parseInt(sleepTime))) {
-					sleepMs = parseInt(sleepTime) + Math.random()*5;
+					sleepMs = parseInt(sleepTime) + Math.random()*10000;
 					console.log("reset sleep time from get_sleep");
 					clearReloader();
 					reloader = window.setTimeout(function() { //window.location.reload() triggers security!
