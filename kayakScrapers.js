@@ -225,6 +225,7 @@ function copyToClipboard(s) {
 } //end KayakScrapers
 
 
+/*Global functions (see poops comment for just)*/
 function sayHi(){
 	console.log("hello");
 }
@@ -263,9 +264,15 @@ function getCity(sleep) {
 function toKayakUrl(city) {
 	var urlBase = "http://www.kayak.com/hotels";
 	var now = new Date();
-	var date1 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+1);
-	var date2 = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + (now.getUTCDate()+2);
-	var url = urlBase + "/" + city.replace(/\s/g, "-") + "/" + date1 + "/" + date2 + "/" + "2guests" + "?pn=0";
+	var tempNow = new Date();
+	var daysAdvance = 2; //prevent timezone differences
+	
+	//The safe way (prevent "2014-02-32" scenario)
+	var date1 = new Date(tempNow.setDate(now.getDate() + daysAdvance));
+	var date2 = new Date(tempNow.setDate(now.getDate() + daysAdvance + 1));
+	var date1Str = date1.getUTCFullYear() + "-" + (date1.getUTCMonth()+1) + "-" + (date1.getUTCDate());
+	var date2Str = date2.getUTCFullYear() + "-" + (date2.getUTCMonth()+1) + "-" + (date2.getUTCDate());
+	var url = urlBase + "/" + city.replace(/\s/g, "-") + "/" + date1Str + "/" + date2Str + "/" + "2guests" + "?pn=0";
 	return url;
 }
 
