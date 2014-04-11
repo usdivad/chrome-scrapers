@@ -24,6 +24,7 @@ var total_hotels = "";
 date_create = date_create.match(/\d+\/\d+\/\d+/)[0];*/
 var now = new Date();
 var date_create = now.getUTCFullYear() + "-" + (now.getUTCMonth()+1) + "-" + now.getUTCDate();
+var timestamp = now.toString();
 
 
 /*var csvColumns = "city,date_create,timestamp,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels";
@@ -165,7 +166,7 @@ for (var i=0; i<hotelListings.length; i++) {
 		}
 	}
 
-	var csvLine = (toCsvFormat([city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels],alternate_sources,alt_rest) + "\n");
+	var csvLine = (toCsvFormat([city,date_create,timestamp,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels],alternate_sources,alt_rest) + "\n");
 	//console.log((i+2) + ": " + csvLine);
 	csvString += csvLine;
 

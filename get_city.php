@@ -13,6 +13,13 @@
 	echo $n;
 	*/
 
+
+
+	//Text
+	$filename = './cities_slave.txt';
+	$file = file($filename);
+	$line = $file[0];
+
 	//time/log stuff
 	$sleepTimes = file('./sleep_times.txt');
 	$sleepLine = $sleepTimes[0];
@@ -20,10 +27,7 @@
 	$timelog = fopen('./timelog.txt', 'a');
 	fwrite($timelog, 'Sleep '.rTrim($sleepLine)."ms before getting ".rTrim($line)." on ".date(DATE_RFC2822).PHP_EOL);
 
-	//Text
-	$filename = './cities_slave.txt';
-	$file = file($filename);
-	$line = $file[0];
+	//Actions
 	//take current city attempt and put it at the bottom; prevents "reloading" pages
 	unset($file[0]); 
 	array_push($file, $line);
