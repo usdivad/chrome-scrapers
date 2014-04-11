@@ -78,32 +78,48 @@ for (var i=0; i<hotelListings.length; i++) {
 	}
 	else {
 		advertised = false;
-		hotel_name = listing.getElementsByClassName("hotelname")[0].getAttribute("title");
+		hotel_name_elm = listing.getElementsByClassName("hotelname")[0]
+		if (typeof hotel_name_elm != "undefined") {
+			hotel_name = hotel_name_elm.getAttribute("title");
+		}
 
 		ad_headline = "";
 		ad_source = "";
 
 		var underprice = listing.getElementsByClassName("underprice")[0];
-		hotel_source = underprice.getElementsByTagName("span")[0].innerText.replace(" ", "");
+		
+		if (typeof underprice != "undefined") {
+			hotel_source = underprice.getElementsByTagName("span")[0].innerText.replace(" ", "");
+		}
+
 		price = listing.getElementsByClassName("bigpricelink")[0].innerText;
 
 
-		var starStr = listing.getElementsByClassName("starsprite")[0].className;
-		var starPattern = /star\d/;
-		var starMatch = starStr.match(starPattern);
-		if (starMatch != null) {
-			rating_stars = starMatch[0].replace(/\D/g, "");
+		var starStr_elm = listing.getElementsByClassName("starsprite")[0];
+		if (typeof starStr_elm != "undefined") {
+			starStr = starStr_elm.className;
+			var starPattern = /star\d/;
+			var starMatch = starStr.match(starPattern);
+			if (starMatch != null) {
+				rating_stars = starMatch[0].replace(/\D/g, "");
+			}
 		}
 
-		rating_reviews = listing.getElementsByClassName("reviewsoverview")[0]
-								.getElementsByTagName("strong")[0]
-								.innerText;
+		var rating_reviews_elm = listing.getElementsByClassName("reviewsoverview")[0];
+		if (typeof rating_reviews_elm != "undefined") {
+			rating_reviews = rating_reviews_elm.getElementsByTagName("strong")[0]
+														.innerText;
+		}
+								
 
-		var nrStr = listing.getElementsByClassName("reviewsoverview")[0].innerText;
-		var nrPattern = /\d+ reviews/;
-		var nrMatch = nrStr.match(nrPattern);
-		if (nrMatch != null) {
-			num_reviews = nrMatch[0].replace(/\D/g, "");
+		var nrStr_elm = listing.getElementsByClassName("reviewsoverview")[0];
+		if (typeof nrStr_elm != "undefined") {
+			var nrStr = nrStr_elm.innerText;
+			var nrPattern = /\d+ reviews/;
+			var nrMatch = nrStr.match(nrPattern);
+			if (nrMatch != null) {
+				num_reviews = nrMatch[0].replace(/\D/g, "");
+			}
 		}
 
 		altSources = listing.getElementsByClassName("providerText");
@@ -310,7 +326,7 @@ function sendSecurityAlert() {
 	var now = new Date().toString();
 	var http = new XMLHttpRequest();
 	var url = "http://usdivad.com/l2/kayak/security.php";
-	var params = "data=" + "Security check encountered at " + encodeURIComponent(now);
+	var params = "data=" + "SECURITY CHECK encountered at " + encodeURIComponent(now);
 	http.open("POST", url, true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	http.onreadystatechange = function() {
