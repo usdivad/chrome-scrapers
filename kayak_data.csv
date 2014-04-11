@@ -1,1 +1,1 @@
-city,date_create,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels,alt1,alt2,alt3,alt4,alt_rest
+city,date_create,timestamp,rank,advertised,hotel_name,hotel_source,ad_headline,ad_source,price,rating_stars,rating_reviews,total_hotels,alt1,alt2,alt3,alt4,alt_rest
