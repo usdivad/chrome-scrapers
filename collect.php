@@ -32,7 +32,10 @@
 	array_pop($cities); //this is a permanent unset, unlike the one in get_city
 	file_put_contents($cities_name, $cities);
 
-
+	//time/log stuff
+	$timelog = fopen('./timelog.txt', 'a');
+	fwrite($timelog, 'Successful collection of '.rTrim($line)." on ".date(DATE_RFC2822).PHP_EOL);
+	fclose($timelog);
 
 	exit();
 ?>

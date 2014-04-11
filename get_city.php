@@ -30,7 +30,7 @@
 	}
 
 
-	//time stuff
+	//time/log stuff
 	$sleepTimes = file('./sleep_times.txt');
 	$sleepLine = $sleepTimes[0];
 
