@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+
+    "permissions": [
+        "tabs", "http://*/*", "https://*/*"],
+
+    "name": "Chrome Scrapers",
+    "description": "go slow",
+    "version": "1.0.0",
+    "author": "David Su",
+
+    "content_scripts": [
+        {
+            "js": ["scrapers.js"],
+            "matches": ["*://*.google.com/*"]
+        }
+    ]
+
+}
