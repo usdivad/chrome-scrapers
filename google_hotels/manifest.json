@@ -4,14 +4,14 @@
     "permissions": [
         "tabs", "http://*/*", "https://*/*"],
 
-    "name": "Chrome Scrapers",
+    "name": "Google Hotel Scraper",
     "description": "go slow",
     "version": "1.0.0",
     "author": "David Su",
 
     "content_scripts": [
         {
-            "js": ["scrapers.js"],
+            "js": ["scraper.js"],
             "matches": ["*://*.google.com/*"]
         }
     ]

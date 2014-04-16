@@ -1,0 +1,36 @@
+<html>
+<head><h2>Google Hotel Scraper</h2></head>
+<body>
+	We should be done here. Click <a href="./data.csv">here</a> for collected data.
+	<br><br>
+	<a class="collectLink">Collect data</a> (appends to same csv)<br>
+	To start a new batch: collect a completely new set, <a href="./reset_files.php">reset the csv</a> and <a class="collectLink">start a new batch</a>. This will erase existing data!
+	<br><br>
+	<a href="./cities_slave.txt">cities left in this batch</a> | <a href="./timelog.txt">timelog</a>
+
+	<script>
+		//Collect a new batch in an hour
+		var url = "http://www.google.com/";
+		var sleep = 3600000;
+		console.log("New collect in an hour...");
+
+		var links = document.getElementsByClassName("collectLink");
+		for (var i=0; i<links.length; i++) {
+			links[i].setAttribute("href", url);
+		}
+
+		window.setTimeout(function() {
+			window.location.href = url;
+		}, sleep); //1hr
+		window.setTimeout(function() {
+			console.log("... half an hour...");
+		}, sleep/2);
+		window.setTimeout(function() {
+			console.log("... 15 minutes...");
+		}, sleep*0.75);
+		window.setTimeout(function() {
+			console.log("... 1 MINUTE...");
+		}, sleep-60000);
+	</script>
+</body>
+</html>
