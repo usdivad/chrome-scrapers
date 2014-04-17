@@ -12,7 +12,7 @@
     "content_scripts": [
         {
             "js": ["scraper.js"],
-            "matches": ["*://*.google.com/*"]
+            "matches": ["*://www.google.com/*"]
         }
     ]
 

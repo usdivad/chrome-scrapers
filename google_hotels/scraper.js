@@ -12,6 +12,8 @@ var city = "";
 cityStr = window.location.href.match(/search\?q=.*/)
 if (cityStr != null) {
 	city = cityStr[0].replace("search\?q=", "");
+	city = city.replace(/\+/g, " ");
+	city = city.replace("hotels in ", "");
 }
 
 var now = new Date();
@@ -22,10 +24,16 @@ var csvString = "";
 
 /**SCRAPE!**/
 var cu = document.getElementById("cu-results");
+if (cu == null) {
+	console.log("no hotel suggestions!");
+	sendToCsv(city + "," + date_create + "," + timestamp + ",,,,\r\n");
+}
+else {
 var results = cu.getElementsByTagName("tr");
 
 for (var i=0; i<results.length; i++) {
 	var listing = results[i];
+	var rank = i+1;
 	var price = "";
 	var hotel_name = "";
 	var hotel_class = "";
@@ -66,13 +74,15 @@ for (var i=0; i<results.length; i++) {
 		if (elms.length > 0) {
 			elm = elms[elms.length-1];
 			if (typeof elm != "undefined") {
-				rating_stars = elm.textContent;
+				nrContent = elm.textContent;
+				num_reviews = nrContent.replace(/\D*/g, "");
+				console.log(num_reviews);
 			}
 		}
 	}
 
 //format
-var csvLine = toCsvFormat([city,date_create,timestamp,price,hotel_name,hotel_class,rating_stars,num_reviews]);
+var csvLine = toCsvFormat([city,date_create,timestamp,rank,hotel_name,price,hotel_class,rating_stars,num_reviews]);
 csvString += csvLine;
 
 }
@@ -81,6 +91,8 @@ csvString += csvLine;
 console.log("HEY");
 console.log(csvString);
 sendToCsv(csvString);
+
+} //end else
 
 function getNextUrl() {
 	var nextCity = getCity(sleepMs);
@@ -256,12 +268,13 @@ var phpBase = "http://usdivad.com/l2/google_hotels/";
 console.log("BEEF");
 
 //w.r.t. sleepMs, if it's too low you'll end up making too many unsuccessful requests
-var sleepMs = (2+(Math.random()*8))*1000; //backup method
+var sleepMs = (5+(Math.random()*8))*1000; //backup method
 
 
 
 var reloader = window.setTimeout(function() { //window.location.reload() triggers security!
-	getCity(1000);
+	scrape(); //for google, as onload seems to give problems
+	//getCity(1000);
 }, sleepMs);
 console.log("From reloader: Now I sleep for " + sleepMs/1000 + " seconds cos I'm not a bot");
 
