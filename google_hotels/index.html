@@ -1,10 +1,14 @@
 <html>
 <head><h2>Google Hotel Scraper</h2></head>
 <body>
-	We should be done here. Click <a href="./data.csv">here</a> for collected data.
+	We should be done here. Click <a href="./kayak_data.csv">here</a> for collected data.
 	<br><br>
-	<a class="collectLink">Collect data</a> (appends to same csv)<br>
+	<a class="collectLink">Collect more data</a> (appends to same csv)<br>
+	Scraper will auto-collect in: <span id="timeLeft">never</span>
+	<br><br>
 	To start a new batch: collect a completely new set, <a href="./reset_files.php">reset the csv</a> and <a class="collectLink">start a new batch</a>. This will erase existing data!
+	<br><br>
+	Alternately you can <a href="soft_reset.php">soft reset</a>, which will reset the cities list but not the csv or timelog.
 	<br><br>
 	<a href="./cities_slave.txt">cities left in this batch</a> | <a href="./timelog.txt">timelog</a>
 
@@ -31,6 +35,18 @@
 		window.setTimeout(function() {
 			console.log("... 1 MINUTE...");
 		}, sleep-60000);
+
+		//Timer display
+		var count = 1;
+		var timer = window.setInterval(function() {
+			var time_seconds = (sleep/1000) - count;
+			var disp_minutes = Math.floor(time_seconds/60);
+			var disp_seconds = time_seconds%60;
+			var disp_text = disp_minutes + ":" + disp_seconds;
+			document.getElementById("timeLeft").textContent = disp_text;
+			count++;
+		}, 1000);
+
 	</script>
 </body>
 </html>
