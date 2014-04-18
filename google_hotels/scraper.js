@@ -26,7 +26,7 @@ var csvString = "";
 var cu = document.getElementById("cu-results");
 if (cu == null) {
 	console.log("no hotel suggestions!");
-	sendToCsv(city + "," + date_create + "," + timestamp + ",,,,\r\n");
+	sendToCsv(removeCommas(city) + "," + removeCommas(date_create) + "," + removeCommas(timestamp) + ",,,,\r\n");
 }
 else {
 var results = cu.getElementsByTagName("tr");
