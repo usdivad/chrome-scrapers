@@ -4,13 +4,13 @@
 
 
 $screenshot = $_POST["img"];
-echo $_POST["amc"];
-echo "h";
+//echo $_POST["amc"];
+
 $screenshot = str_replace("data:image/jpeg;base64,", "", $screenshot);
 $screenshot = str_replace(" ", "+", $screenshot);
 $data = base64_decode($screenshot);
 $image = imagecreatefromstring($data);
-$file = uniqid().".jpg";
+$file = date(DATE_W3C).".jpg";
 //file_put_contents($file, $image);
 if ($image !== "false") {
 	//header('Content-Type: image/jpeg');
@@ -18,7 +18,7 @@ if ($image !== "false") {
 	imagedestroy($image);
 }
 echo $file;
-echo "screenshot data: ";
-echo $screenshot;
+//echo "screenshot data: ";
+echo $data.length;
 
 ?>
