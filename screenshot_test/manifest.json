@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+
+    "permissions": [
+        "tabs", "<all_urls>"],
+
+    "name": "Screenshot Test",
+    "description": "go slow",
+    "version": "1.0.0",
+    "author": "David Su",
+
+    "content_scripts": [
+        {
+            "js": ["screen.js"],
+            "matches": ["*://*.kayak.com/*", "*://*.google.com/*"],
+            "run_at": "document_end"
+        }
+    ],
+
+    "background": {
+        "scripts": ["jquery-1.10.2.js", "background.js"]
+    }
+
+}
