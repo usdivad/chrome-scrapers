@@ -177,6 +177,7 @@ console.log(csvString);*/
 
 //Data collection
 sendToCsv(csvString);
+takeScreenshot(city);
 
 //Get next city and redirect (this is now in ajax in sendToCsv)
 //getCity();
@@ -185,6 +186,14 @@ sendToCsv(csvString);
 function getNextUrl() {
 	var nextCity = getCity(sleepMs);
 	var nextUrl = toKayakUrl(nextCity);
+}
+
+//Image capture!! relies on background.js n all
+function takeScreenshot(cityName) {
+	chrome.runtime.sendMessage({ready_set: "go", name: cityName}, function(resp) {
+		console.log("a");
+		console.log(resp.itory);
+	});
 }
 
 

@@ -2,11 +2,11 @@
     "manifest_version": 2,
 
     "permissions": [
-        "tabs", "http://*/*", "https://*/*"],
+        "tabs", "<all_urls>"],
 
     "name": "Kayak Scrapers",
     "description": "Sreparc Kayak",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "David Su",
 
     "content_scripts": [
@@ -14,6 +14,10 @@
             "js": ["kayakScrapers.js"],
             "matches": ["*://*.kayak.com/*"]
         }
-    ]
+    ],
+
+    "background": {
+        "scripts": ["jquery-1.10.2.js", "background.js"]
+    }
 
 }
