@@ -177,7 +177,8 @@ console.log(csvString);*/
 
 //Data collection
 sendToCsv(csvString);
-takeScreenshot(city);
+//Uncomment this to use img_capture (bandwidth!)
+//takeScreenshot(city);
 
 //Get next city and redirect (this is now in ajax in sendToCsv)
 //getCity();
