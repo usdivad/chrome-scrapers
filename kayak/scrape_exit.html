@@ -13,18 +13,28 @@
 	<a href="./cities_slave.txt">cities left in this batch</a> | <a href="./timelog.txt">timelog</a>
 
 	<script>
-		//Collect a new batch in an hour
-		var sleep = 3600000;
-		console.log("New collect in an hour...");
+		//Collect a new batch in 3 hours
+		var url = "http://www.kayak.com/";
+		var sleep = 3600000 * 3; //3 hours
+		console.log("New collect in 3 hours...");
+
+		var links = document.getElementsByClassName("collectLink");
+		for (var i=0; i<links.length; i++) {
+			links[i].setAttribute("href", url);
+		}
+
 		window.setTimeout(function() {
-			window.location.href = "http://www.kayak.com/";
+			window.location.href = url;
 		}, sleep); //1hr
 		window.setTimeout(function() {
-			console.log("... half an hour...");
-		}, sleep/2);
+			console.log("... 1 hour ...");
+		}, sleep - 3600000);
 		window.setTimeout(function() {
-			console.log("... 15 minutes...");
-		}, sleep*0.75);
+			console.log("... 30 minutes ...");
+		}, sleep - 1800000);
+		window.setTimeout(function() {
+			console.log("... 30 minutes ...");
+		}, sleep - 900000);
 		window.setTimeout(function() {
 			console.log("... 1 MINUTE...");
 		}, sleep-60000);

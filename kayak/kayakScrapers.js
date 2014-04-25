@@ -374,7 +374,7 @@ function sendSecurityAlert() {
 console.log("BEEF");
 
 //w.r.t. sleepMs, if it's too low you'll end up making too many unsuccessful requests
-var sleepMs = (7+(Math.random()*8))*1000; //backup method
+var sleepMs = (7+(Math.random()*10))*1000; //backup method
 
 
 /*var dice = Math.random();
@@ -407,5 +407,5 @@ window.onload = function() {
 	sayHi();
 	window.setTimeout(function() {
 		KayakScrapers();
-	}, 500);
+	}, 1000);
 }
