@@ -292,5 +292,5 @@ window.onload = function() { //has to be thru extension
 	window.setTimeout(function() {
 		scrape();
 		console.log("scrape");
-	}, 500);
+	}, 1000 + Math.random()*2000);
 }
