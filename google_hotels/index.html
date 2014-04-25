@@ -43,9 +43,10 @@
 		var count = 1;
 		var timer = window.setInterval(function() {
 			var time_seconds = (sleep/1000) - count;
-			var disp_minutes = Math.floor(time_seconds/60);
+			var disp_hours = Math.floor(time_seconds/3600);
+			var disp_minutes = Math.floor(time_seconds/60)%60;
 			var disp_seconds = time_seconds%60;
-			var disp_text = disp_minutes + ":" + disp_seconds;
+			var disp_text = disp_hours + ":" + disp_minutes + ":" + disp_seconds;
 			document.getElementById("timeLeft").textContent = disp_text;
 			count++;
 		}, 1000);
